@@ -10,4 +10,4 @@ def multiple_returns(sentence):
      else:
          num_char = 0
      
-     return (num_char, sentence[0])     
+     return (num_char, sentence if not sentence else sentence[:1])     
