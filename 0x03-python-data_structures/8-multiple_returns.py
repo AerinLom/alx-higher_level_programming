@@ -3,5 +3,7 @@
 def multiple_returns(sentence):
      if not sentence:
          return (0, None)
+     if sentence:
+         num_char = len(sentence)
      
-     return (len(sentence), sentence[0])     
+     return (num_char, sentence[0])     
