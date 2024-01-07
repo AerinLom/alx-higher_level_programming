@@ -2,8 +2,12 @@
 
 def multiple_returns(sentence):
      if not sentence:
-         return (0, None)
+         sentence = None
+
      if sentence:
          num_char = len(sentence)
+
+     else:
+         num_char = 0
      
      return (num_char, sentence[0])     
