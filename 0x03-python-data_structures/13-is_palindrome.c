@@ -1,30 +1,6 @@
 #include "lists.h"
 
 /**
-  *reverse_l - Reverses linked list.
-  *@head: Double pointer to the head of the list.
-  *Return: Pointer to new head of reversed list
-  */
-
-listint_t *reverse_l(listint_t **head)
-{
-	listint_t *prev = NULL;
-	listint_t *active = *head;
-	listint_t *next;
-
-	while (active != NULL)
-	{
-		next = active->next;
-		active->next = prev;
-		prev = active;
-		active = next;
-	}
-
-	*head = prev;
-	return (*head);
-}
-
-/**
  * is_palindrome - checks if a singly linked list is a palindrome
  * @head: double pointer to the head of the list
  * Return: 1 if palindrome, 0 otherwise
@@ -32,44 +8,36 @@ listint_t *reverse_l(listint_t **head)
 
 int is_palindrome(listint_t **head)
 {
-listint_t *slug = *head, *rapid = *head;
-listint_t *prev_slow_ptr = *head, *middle = NULL;
-int is_palindrome = 1;
+listint_t *reversed_list = NULL, *current_head = *head;
+listint_t *copied_list = NULL, *copied_list_ptr = NULL;
 
-if (*head == NULL || (*head)->next == NULL)
-	return (is_palindrome);
-while (rapid != NULL && rapid->next != NULL)
+if (*head == NULL || current_head->next == NULL)
+	return (1);
+
+while (current_head != NULL)
 {
-	rapid = rapid->next->next;
-	prev_slow_ptr = slug;
-	slug = slug->next;
+	add_nodeint_end(&reversed_list, current_head->n);
+	add_nodeint_end(&copied_list, current_head->n);
+	current_head = current_head->next;
 }
-if (rapid != NULL)
+
+copied_list_ptr = copied_list;
+
+while (*head != NULL)
 {
-	middle = slug;
-	slug = slug->next;
-}
-prev_slow_ptr->next = NULL;
-reverse_l(&slug);
-listint_t *l_1 = *head;
-listint_t *l_2 = slug;
-while (l_1 != NULL && l_2 != NULL)
-{
-	if (l_1->n != l_2->n)
+	if ((*head)->n != copied_list_ptr->n)
 	{
-		is_palindrome = 0;
-		break;
+		free_listint(reversed_list);
+		free_listint(copied_list);
+		return (0);
 	}
-	l_1 = l_1->next;
-	l_2 = l_2->next;
+
+*head = (*head)->next;
+copied_list_ptr = copied_list_ptr->next;
 }
-reverse_l(&slug);
-if (middle != NULL)
-{
-	prev_slow_ptr->next = middle;
-	middle->next = slug;
-}
-else
-prev_slow_ptr->next = slug;
-return (is_palindrome);
+
+free_listint(reversed_list);
+free_listint(copied_list);
+
+return (1);
 }
