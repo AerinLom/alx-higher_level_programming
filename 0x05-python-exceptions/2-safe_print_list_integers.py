@@ -3,7 +3,7 @@
 def safe_print_list_integers(my_list=[], x=0):
     counter = 0
 
-    for indexNum in range(x): 
+    for indexNum in range(x):
         try:
             data = my_list[indexNum]
             if isinstance(data, int):
