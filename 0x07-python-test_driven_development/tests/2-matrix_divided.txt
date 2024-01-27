@@ -1,0 +1,150 @@
+==================================
+How to Utilise 2-matrix_divided.py
+==================================
+
+In this module, the matrix division function is defined as ``matrix_divided(matrix, div)``.
+
+How it is used
+==============
+
+The ``matrix_divided(...)`` function returns a new matrix containing a
+matrix with all elements divided by the specified divisor.
+-------------------------------------------------------------------------------------
+
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix = [
+    ...     [5, 10, 15],
+    ...     [20, 25, 30]
+    ... ]
+    >>> print(matrix_divided(matrix, 5))
+    [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+
+The quotients are rounded to a maximum of two decimal places.
+-------------------------------------------------------------
+
+    >>> matrix = [
+    ...     [2, 4, 6],
+    ...     [8, 10, 12]
+    ... ]
+    >>> print(matrix_divided(matrix, 4))
+    [[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]]
+
+The original matrix remains the same.
+-------------------------------------
+
+    >>> print(matrix)
+    [[2, 4, 6], [8, 10, 12]]
+
+Floating-point numbers are handled.
+-----------------------------------
+
+    >>> matrix = [
+    ...     [1.5, -3.0, 4.5],
+    ...     [6.0, 7.5, -9.0]
+    ... ]
+    >>> print(matrix_divided(matrix, 2))
+    [[0.75, -1.5, 2.25], [3.0, 3.75, -4.5]]
+
+Combining integers and floats is also supported.
+------------------------------------------------
+
+    >>> matrix = [
+    ...     [1, -3.0, 2, 4.5, 5],
+    ...     [-6.0, 7.5, 8, 9.999, 10]
+    ... ]
+    >>> print(matrix_divided(matrix, 2))
+    [[0.5, -1.5, 1.0, 2.25, 2.5], [-3.0, 3.75, 4.0, 5.0, 5.0]]
+
+Edge Cases
+==========
+
+The ``matrix`` value must be a list of lists with either integers or
+floats being supported. If ``matrix`` is not a list, a TypeError is raised.
+---------------------------------------------------------------------------
+
+    >>> matrix = "invalid"
+    >>> print(matrix_divided(matrix, 4))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+::
+
+    >>> matrix = None
+    >>> print(matrix_divided(matrix, 1))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+An empty list of lists will succeed.
+------------------------------------
+
+    >>> matrix = [[]]
+    >>> print(matrix_divided(matrix, 9))
+    [[]]
+
+An empty list will raise a TypeError.
+-------------------------------------
+
+    >>> matrix = []
+    >>> print(matrix_divided(matrix, 6))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+List of lists with different sizes raise a type error.
+------------------------------------------------------
+
+    >>> matrix = [
+    ...     [11, 24, 37, 490, 28],
+    ...     [5, 60, 789]
+    ... ]
+    >>> print(matrix_divided(matrix, 5))
+    Traceback (most recent call last):
+    TypeError: Each row of the matrix must have the same size
+
+The same TypeError is raised if the value of ``matrix`` not exactly a list of lists.
+------------------------------------------------------------------------------------
+
+    >>> matrix = [13, 2, 390, 55]
+    >>> print(matrix_divided(matrix, 10))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+The same TypeError is raised if any elements in ``matrix`` are
+not either integer nor float values.
+--------------------------------------------------------------
+
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [4, "invalid", 6]
+    ... ]
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Incorrect Divisors
+==================
+
+The ``div`` parameter must be an integer or float value, else a TypeError
+is raised.
+-------------------------------------------------------------------------
+
+    >>> matrix = [
+    ...     [134, 25, 34],
+    ...     [42, 59, 67]
+    ... ]
+    >>> print(matrix_divided(matrix, "invalid"))
+    Traceback (most recent call last):
+    TypeError: div must be a number
+
+``div`` can't be a non-zero value, otherwise a ZeroDivisionError is raised.
+----------------------------------------------------------------------
+
+    >>> print(matrix_divided(matrix, 0))
+    Traceback (most recent call last):
+    ZeroDivisionError: division by zero
+
+Example of "None" used as a div value
+-------------------------------------
+
+    >>> print(matrix_divided(matrix, None))
+    Traceback (most recent call last):
+    TypeError: div must be a number

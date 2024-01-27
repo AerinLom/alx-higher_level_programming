@@ -1,0 +1,86 @@
+====================================
+How to Utilise 5-text_indentation.py
+====================================
+
+In this module, the function `text_indentation(text)` is defined.
+
+How it is used
+==============
+
+The `text_indentation` function prints a string
+with 2 new lines after any of these characters: '.', '?' or ':' occurs.
+-----------------------------------------------------------------------
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+    >>> text_indentation("This. is: a. test?")
+    This.
+    <BLANKLINE>
+     is:
+    <BLANKLINE>
+     a.
+    <BLANKLINE>
+     test?
+    <BLANKLINE>
+
+Blank spaces are not included on output.
+----------------------------------------
+
+    >>> text_indentation("     Testing spaces.")
+    Testing spaces.
+    <BLANKLINE>
+
+::
+
+    >>> text_indentation("Testing spaces at the end.     ")
+    Testing spaces at the end.
+    <BLANKLINE>
+
+If no puntuation marks are found, the line prints as is.
+--------------------------------------------------------
+
+    >>> text_indentation("no puntuation")
+    no puntuation
+
+If no input is given, nothing prints.
+-------------------------------------
+
+    >>> text_indentation("")
+
+
+Example of only puntuation provided as input
+--------------------------------------------
+    >>> text_indentation(".?.:!")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    !
+
+Edge Cases
+==========
+
+Value `text` must be a string, else, a TypeError is raised.
+-----------------------------------------------------------
+
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+Testing with a value of "None"
+------------------------------
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+    
+Testing with a value with more than one value
+---------------------------------------------
+
+    >>> text_indentation({"test 1.", "test 2."})
+    Traceback (most recent call last):
+    TypeError: text must be a string

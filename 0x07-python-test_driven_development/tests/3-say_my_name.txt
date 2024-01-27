@@ -1,0 +1,60 @@
+===============================
+How to Utilise 3-say_my_name.py
+===============================
+
+In this module, the say my name function is defined
+
+How it is used
+==============
+
+The ``say_my_name(...)`` function prints a given first name and an optional
+last name in a sentence.
+---------------------------------------------------------------------------
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    >>> say_my_name("Aerin", "Lombard")
+    My name is Aerin Lombard
+
+The ```last_name``` is optional, if it is not present only the first name prints.
+---------------------------------------------------------------------------------
+
+    >>> say_my_name("John")
+    My name is John 
+
+Edge Cases
+==========
+
+Input ``first_name`` must be of type string or a TypeError occurs
+-----------------------------------------------------------------
+
+   >>> say_my_name(7.55)
+   Traceback (most recent call last):
+   TypeError: first_name must be a string
+
+Input ``last_name`` must be of type string or a TypeError occurs
+----------------------------------------------------------------
+
+   >>> say_my_name("Craig", 737)
+   Traceback (most recent call last):
+   TypeError: last_name must be a string
+
+List of names will raise a TypeError
+------------------------------------
+
+   >>> say_my_name("George", ["van", "de", "Merwe"])
+   Traceback (most recent call last):
+   TypeError: last_name must be a string
+
+Too many inputs will raise a TypeError
+--------------------------------------
+
+   >>> say_my_name("Liam", "Michael", "Johnson")
+   Traceback (most recent call last):
+   TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+If no ``first_name`` is given as input a TypeError occurs
+---------------------------------------------------------
+
+   >>> say_my_name()
+   Traceback (most recent call last):
+   TypeError: say_my_name() missing 1 required positional argument: 'first_name'
