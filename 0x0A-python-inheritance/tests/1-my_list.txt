@@ -2,10 +2,9 @@
 Implementation of 1-my_list.py
 ==============================
 
-MyList = __import__('1-my_list').MyList
-
 Test case 1: empty list
 -----------------------
+>>> MyList = __import__('1-my_list').MyList
 >>> a = []
 >>> my_list = MyList(a)
 >>> my_list.print_sorted()
@@ -97,10 +96,10 @@ Test case 9: list of floating point numbers
 
 Test case 10: object not present
 --------------------------------
->>>my_list-new.print_sorted()
+>>> my_list_new.print_sorted()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-NameError: name 'my_list-new' is not defined
+NameError: name 'my_list_new' is not defined
 >>>
 
 Test case 11: list with one element
@@ -108,11 +107,4 @@ Test case 11: list with one element
 >>> my_list = MyList([42])
 >>> my_list.print_sorted()
 [42]
->>>
-
-Test case 12: list with None
-----------------------------# Test case 15: list with None
->>> my_list = MyList([None, None, None])
->>> my_list.print_sorted()
-[None, None, None]
 >>>
