@@ -1,0 +1,118 @@
+==============================
+Implementation of 1-my_list.py
+==============================
+
+MyList = __import__('1-my_list').MyList
+
+Test case 1: empty list
+-----------------------
+>>> a = []
+>>> my_list = MyList(a)
+>>> my_list.print_sorted()
+[]
+>>>
+
+Test case 2: list of different numbers
+--------------------------------------
+>>> my_list = MyList()
+>>> my_list.append(5)
+>>> my_list.append(2)
+>>> my_list.append(9)
+>>> my_list.print_sorted()
+[2, 5, 9]
+>>>
+
+Test case 3: list of same numbers
+---------------------------------
+>>> my_list = MyList()
+>>> my_list.append(3)
+>>> my_list.append(3)
+>>> my_list.append(3)
+>>> my_list.append(3)
+>>> my_list.print_sorted()
+[3, 3, 3, 3]
+>>>
+
+Test case 4: list of negative numbers
+-------------------------------------
+>>> my_list = MyList()
+>>> my_list.append(-5)
+>>> my_list.append(-1)
+>>> my_list.append(-3)
+>>> my_list.append(-2)
+>>> my_list.print_sorted()
+[-5, -3, -2, -1]
+>>>
+
+Test case 5: list of mixed numbers
+----------------------------------
+>>> my_list = MyList()
+>>> my_list.append(-2)
+>>> my_list.append(0)
+>>> my_list.append(5)
+>>> my_list.append(-3)
+>>> my_list.append(1)
+>>> my_list.print_sorted()
+[-3, -2, 0, 1, 5]
+>>>
+
+Test case 6: list of strings
+----------------------------
+>>> my_list = MyList(["apple", "banana", "orange", "cherry"])
+>>> my_list.print_sorted()
+['apple', 'banana', 'cherry', 'orange']
+>>>
+
+Test case 7: empty list after append
+------------------------------------
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list = MyList([])
+>>> my_list.print_sorted()
+[]
+>>>
+
+Test case 8: list in descending order
+-------------------------------------
+>>> my_list = MyList()
+>>> my_list.append(5)
+>>> my_list.append(4)
+>>> my_list.append(3)
+>>> my_list.append(2)
+>>> my_list.print_sorted()
+[2, 3, 4, 5]
+>>>
+
+Test case 9: list of floating point numbers
+-------------------------------------------
+>>> my_list = MyList()
+>>> my_list.append(3.5)
+>>> my_list.append(1.2)
+>>> my_list.append(2.8)
+>>> my_list.print_sorted()
+[1.2, 2.8, 3.5]
+>>>
+
+Test case 10: object not present
+--------------------------------
+>>>my_list-new.print_sorted()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'my_list-new' is not defined
+>>>
+
+Test case 11: list with one element
+-----------------------------------
+>>> my_list = MyList([42])
+>>> my_list.print_sorted()
+[42]
+>>>
+
+Test case 12: list with None
+----------------------------# Test case 15: list with None
+>>> my_list = MyList([None, None, None])
+>>> my_list.print_sorted()
+[None, None, None]
+>>>
