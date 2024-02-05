@@ -1,0 +1,94 @@
+==============================
+Implementation of 1-my_list.py
+==============================
+
+Test case 1 - Importing class:
+------------------------------
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+
+Test case 2 - Positive integer validation:
+------------------------------------------
+    >>> base_geo = BaseGeometry()
+    >>> base_geo.integer_validator("length", 1556)
+
+
+Test case 3 - Non-integer rejection:
+------------------------------------
+    >>> base_geo = BaseGeometry()
+    >>> base_geo.integer_validator("name", "Johnny")
+    Traceback (most recent call last):
+        ...
+    TypeError: name must be an integer
+
+
+Test case 4 - Boolean rejection:
+--------------------------------
+    >>> base_geo = BaseGeometry()
+    >>> base_geo.integer_validator("value", False)
+    Traceback (most recent call last):
+        ...
+    TypeError: value must be an integer
+
+
+Test case 5 - Calling unimplemented method:
+-------------------------------------------
+    >>> base_geo = BaseGeometry()
+    >>> base_geo.area()
+    Traceback (most recent call last):
+        ...
+    Exception: area() is not implemented
+
+
+Test case 6 - Negative value rejection:
+---------------------------------------
+    >>> base_geo = BaseGeometry()
+    >>> base_geo.integer_validator("diagonal", -170)
+    Traceback (most recent call last):
+        ...
+    ValueError: diagonal must be greater than 0
+
+
+Test case 7 - None rejection:
+-----------------------------
+    >>> base_geo = BaseGeometry()
+    >>> base_geo.integer_validator("duration", None)
+    Traceback (most recent call last):
+              ...
+    TypeError: duration must be an integer
+
+
+Test case 8 - List rejection:
+-----------------------------
+    >>> base_geo = BaseGeometry()
+    >>> base_geo.integer_validator("count", [78])
+    Traceback (most recent call last):
+        ...
+    TypeError: count must be an integer
+
+
+Test case 9 - Extra arguments error:
+------------------------------------
+    >>> base_geo = BaseGeometry()
+    >>> base_geo.integer_validator("size", 176, 20)
+    Traceback (most recent call last):
+        ...
+    TypeError: integer_validator() takes 3 positional arguments but 4 were given
+
+
+Test case 10 - Single argument error:
+-------------------------------------
+    >>> base_geo = BaseGeometry()
+    >>> base_geo.area(5)
+    Traceback (most recent call last):
+        ...
+    TypeError: area() takes 1 positional argument but 2 were given
+
+
+Test case 11 - Zero rejection:
+-------------------------------
+    >>> base_geo = BaseGeometry()
+    >>> base_geo.integer_validator("width", 0)
+    Traceback (most recent call last):
+        ...
+    ValueError: width must be greater than 0
