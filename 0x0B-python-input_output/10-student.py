@@ -16,7 +16,7 @@ class Student:
     def to_json(self, attrs=None):
         if attrs is None:
             return self.__dict__
-        
+
         result = {}
         for attribute in sorted(attrs):
             if hasattr(self, attribute):
