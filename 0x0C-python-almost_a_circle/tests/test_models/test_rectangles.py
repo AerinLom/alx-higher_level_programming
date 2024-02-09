@@ -4,9 +4,12 @@
 Unit Tests for rectangle.py
 """
 
-
+import io
+import sys
 import unittest
+from models.base import Base
 from models.rectangle import Rectangle
+
 
 class TestRectangle(unittest.TestCase):
     """
@@ -114,7 +117,6 @@ class TestRectangle(unittest.TestCase):
         actual_output2 = str(r2)
         self.assertEqual(actual_output2, expected_output2)
 
-
     def test_multiple_display(self):
         """
         Test display method with multiple rectangles
@@ -163,6 +165,28 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.x, 9)
         self.assertEqual(r.y, 10)
 
+    def test_update_with_kwargs(self):
+        """
+        Test update method with keyword arguments
+        """
+        r = Rectangle(3, 4)
+        r.update(width=5)
+        self.assertEqual(r.width, 5)
+        r.update(height=6)
+        self.assertEqual(r.height, 6)
+        r.update(x=7)
+        self.assertEqual(r.x, 7)
+        r.update(y=8)
+        self.assertEqual(r.y, 8)
+        r.update(id=9)
+        self.assertEqual(r.id, 9)
+        r.update(id=10, width=11, height=12, x=13, y=14)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 11)
+        self.assertEqual(r.height, 12)
+        self.assertEqual(r.x, 13)
+        self.assertEqual(r.y, 14)
+
+
 if __name__ == '__main__':
     unittest.main()
-
