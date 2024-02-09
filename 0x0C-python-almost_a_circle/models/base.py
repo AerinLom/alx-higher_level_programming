@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-
+This module defines a Base class for object creation.
 """
 
 
 class Base:
     """
-    
+    Base class for object creation with an id.
     """
     __nb_objects = 0
     def __init__(self, id=None):
