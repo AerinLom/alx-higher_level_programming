@@ -36,6 +36,17 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r2.y, 8)
         self.assertEqual(r2.id, 300)
 
+    def test_id_assignment(self):
+        """
+        Test if id is being assigned properly
+        """
+        r1 = Rectangle(10, 20)
+        r2 = Rectangle(5, 15)
+        r3 = Rectangle(8, 12)
+
+        self.assertEqual(r2.id, r1.id + 1)
+        self.assertEqual(r2.id, r3.id - 1)
+	
     def test_attribute_validations(self):
         """
         Test attribute validations
@@ -186,6 +197,52 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 12)
         self.assertEqual(r.x, 13)
         self.assertEqual(r.y, 14)
+
+    def test_to_dictionary(self):
+        # Test case without exceptions
+        r = Rectangle(10, 20, 2, 3, 1)
+        expected_dict = {'id': 1, 'width': 10, 'height': 20, 'x': 2, 'y': 3}
+        self.assertEqual(r.to_dictionary(), expected_dict)
+
+        # Test case with negative width
+        with self.assertRaises(ValueError):
+            r = Rectangle(-10, 20, 2, 3, 1)
+            r.to_dictionary()
+
+        # Test case with negative height
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, -20, 2, 3, 1)
+            r.to_dictionary()
+
+        # Test case with negative x
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, 20, -2, 3, 1)
+            r.to_dictionary()
+
+        # Test case with negative y
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, 20, 2, -3, 1)
+            r.to_dictionary()
+
+        # Test case with non-integer width
+        with self.assertRaises(TypeError):
+            r = Rectangle("10", 20, 2, 3, 1)
+            r.to_dictionary()
+
+        # Test case with non-integer height
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, "20", 2, 3, 1)
+            r.to_dictionary()
+
+        # Test case with non-integer x
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, 20, "2", 3, 1)
+            r.to_dictionary()
+
+        # Test case with non-integer y
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, 20, 2, "3", 1)
+            r.to_dictionary()
 
 
 if __name__ == '__main__':

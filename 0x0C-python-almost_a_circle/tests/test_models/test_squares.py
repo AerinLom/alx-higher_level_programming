@@ -53,6 +53,42 @@ class TestSquare(unittest.TestCase):
         s = Square(5, 2, 3, 1)
         self.assertEqual(str(s), "[Square] (1) 2/3 - 5")
 
+    def test_to_dictionary(self):
+        # Test dictionary representation
+        s = Square(5, 2, 3, 1)
+        expected_dict = {'id': 1, 'size': 5, 'x': 2, 'y': 3}
+        self.assertEqual(s.to_dictionary(), expected_dict)
+
+        # Test case with negative size
+        with self.assertRaises(ValueError):
+            s = Square(-5, 2, 3, 1)
+            s.to_dictionary()
+
+        # Test case with negative x
+        with self.assertRaises(ValueError):
+            s = Square(5, -2, 3, 1)
+            s.to_dictionary()
+
+        # Test case with negative y
+        with self.assertRaises(ValueError):
+            s = Square(5, 2, -3, 1)
+            s.to_dictionary()
+
+        # Test case with non-integer size
+        with self.assertRaises(TypeError):
+            s = Square("5", 2, 3, 1)
+            s.to_dictionary()
+
+        # Test case with non-integer x
+        with self.assertRaises(TypeError):
+            s = Square(5, "2", 3, 1)
+            s.to_dictionary()
+
+        # Test case with non-integer y
+        with self.assertRaises(TypeError):
+            s = Square(5, 2, "3", 1)
+            s.to_dictionary()
+
 
 if __name__ == '__main__':
     unittest.main()
