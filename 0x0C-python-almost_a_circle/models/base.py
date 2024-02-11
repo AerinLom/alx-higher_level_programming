@@ -36,3 +36,12 @@ class Base:
             new_list = list_objs
             json_str = cls.to_json_string([items.to_dictionary() for items in new_list])
             file.write(json_str)
+
+    @staticmethod
+    def from_json_string(json_string):
+        json_list = []
+        if json_string is None:
+            return json_list
+        else:
+            json_list = json.loads(json_string)
+            return json_list
