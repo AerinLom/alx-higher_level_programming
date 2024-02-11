@@ -45,6 +45,32 @@ class TestBase(unittest.TestCase):
         expected_str = '[{"id": 1, "name": "John"}, {"id": 2, "name": "Jane"}]'
         self.assertEqual(json_str, expected_str)
 
+    def test_from_json_string_empty_string(self):
+        """
+        Test from_json_string method with an empty string
+        """
+        json_string = "[]"
+        result = Base.from_json_string(json_string)
+        self.assertEqual(result, [])
+
+    def test_from_json_string_none(self):
+        """
+        Test from_json_string method with None
+        """
+        json_string = None
+        result = Base.from_json_string(json_string)
+        self.assertEqual(result, [])
+
+    def test_from_json_string_valid_json(self):
+        """
+        Test from_json_string method with a valid JSON string
+        """
+        json_string = '[{"id": 1, "name": "John"}, {"id": 2, "name": "Jane"}]'
+        result = Base.from_json_string(json_string)
+        expected = [{"id": 1, "name": "John"}, {"id": 2, "name": "Jane"}]
+        self.assertEqual(result, expected)
+
+
 if __name__ == '__main__':
     unittest.main()
 
