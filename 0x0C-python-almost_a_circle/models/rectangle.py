@@ -1,19 +1,13 @@
 #!/usr/bin/python3
-"""
-Defines a class Rectangle that inherits from Base
-"""
+"""Defines a class Rectangle that inherits from Base"""
 from models.base import Base
 
 
 class Rectangle(Base):
-    """
-    A class that acts as a rectangle
-    """
+    """A class that acts as a rectangle"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """
-        Initialises a rectanle with set attributes
-        """
+        """Initialises a rectanle with set attributes"""
         self.width = width
         self.height = height
         self.x = x
