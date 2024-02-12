@@ -46,7 +46,7 @@ class TestRectangle(unittest.TestCase):
 
         self.assertEqual(r2.id, r1.id + 1)
         self.assertEqual(r2.id, r3.id - 1)
-	
+
     def test_attribute_validations(self):
         """
         Test attribute validations
