@@ -3,6 +3,8 @@
 import MySQLdb
 import sys
 
+state = sys.argv[4]
+
 if __name__ == "__main__":
     database = MySQLdb.connect(
         host="localhost",
@@ -12,12 +14,7 @@ if __name__ == "__main__":
         port=3306
     )
     cursor = database.cursor()
-    cursor.execute(
-        "SELECT id, name "
-        "FROM states "
-        "WHERE name LIKE 'N%' "
-        "ORDER BY id ASC"
-    )
+    cursor.execute("SELECT * FROM states WHERE name LIKE '{}'".format(state))
     results = cursor.fetchall()
     for row in results:
         print(row)
