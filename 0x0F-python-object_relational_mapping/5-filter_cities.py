@@ -18,7 +18,7 @@ if __name__ == "__main__":
                    "states ON states.id=cities.state_id"
                    " WHERE states.name=%s", (state, ))
     results = cursor.fetchall()
-    cities = ' '.join(row[0] for row in results)
-    print(cities)
+    cities = list(row[0] for row in results)
+    print(cities, sep=", ")
     cursor.close()
     database.close()
