@@ -3,7 +3,6 @@
 import MySQLdb
 import sys
 
-state = sys.argv[4]
 
 if __name__ == "__main__":
     database = MySQLdb.connect(
@@ -14,6 +13,7 @@ if __name__ == "__main__":
         port=3306
     )
     cursor = database.cursor()
+    state = sys.argv[4]
     cursor.execute("SELECT cities.name FROM cities INNER JOIN "
                    "states ON states.id=cities.state_id WHERE states.name"
                    " LIKE %s", (state, ))
