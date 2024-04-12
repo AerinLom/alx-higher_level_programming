@@ -13,7 +13,7 @@ if __name__ == "__main__":
     )
     cursor = database.cursor()
     cursor.execute(
-        "SELECT id, name "
+        "SELECT * "
         "FROM states "
         "WHERE name LIKE 'N%' "
         "ORDER BY id ASC"
