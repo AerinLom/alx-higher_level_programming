@@ -19,6 +19,6 @@ if __name__ == "__main__":
                    " WHERE states.name=%s", (state, ))
     results = cursor.fetchall()
     cities = list(row[0] for row in results)
-    print(cities, sep=", ")
+    print(*cities, sep=", ")
     cursor.close()
     database.close()
