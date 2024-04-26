@@ -5,9 +5,9 @@ A script that takes a URL, requests the URL and displays value of variable X-Req
 
 
 if __name__ == "__main__":
-    import requests
+    from requests import get
     import sys
 
     url = sys.argv[1]
-    response = requests.get(url)
+    response = get(url)
     print(response.headers.get('X-Request-Id'))
