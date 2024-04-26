@@ -2,7 +2,7 @@
 """
 A script that takes input url and displays the value of X-Request-Id variable
 """
-import urllib
+import urllib.request
 import sys
 
 
