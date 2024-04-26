@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-A script that takes in a URL and prints error codes
+A script that fetches https://alx-intranet.hbtn.io/status using requests
 """
 
 
