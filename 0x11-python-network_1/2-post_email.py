@@ -17,4 +17,4 @@ if __name__ == "__main__":
 
     with urllib.request.urlopen(post_req) as response:
         email_response = response.read().decode('utf-8')
-    print(f"Your email is: {email_response}")
+    print(email_response)
