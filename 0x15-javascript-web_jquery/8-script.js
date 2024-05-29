@@ -1,4 +1,4 @@
-let url = 'https://swapi.co/api/films/?format=json';
+let url = 'https://swapi-api.alx-tools.com/api/films/?format=json';
 $.get(url, function (data) {
   let movies = data.results;
   for (let movie of movies) {
